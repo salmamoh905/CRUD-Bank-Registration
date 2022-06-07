@@ -1,25 +1,27 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\user\\Downloads\\bank\\WebAPI\\WebAPI.csproj": {}
+    "C:\\Users\\user\\Downloads\\bank\\webapi\\WebAPI.csproj": {}
   },
   "projects": {
-    "C:\\Users\\user\\Downloads\\bank\\WebAPI\\WebAPI.csproj": {
+    "C:\\Users\\user\\Downloads\\bank\\webapi\\WebAPI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\user\\Downloads\\bank\\WebAPI\\WebAPI.csproj",
+        "projectUniqueName": "C:\\Users\\user\\Downloads\\bank\\webapi\\WebAPI.csproj",
         "projectName": "WebAPI",
-        "projectPath": "C:\\Users\\user\\Downloads\\bank\\WebAPI\\WebAPI.csproj",
+        "projectPath": "C:\\Users\\user\\Downloads\\bank\\webapi\\WebAPI.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\user\\Downloads\\bank\\WebAPI\\obj\\",
+        "outputPath": "C:\\Users\\user\\Downloads\\bank\\webapi\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config"
+          "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
         ],
         "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -38,6 +40,20 @@
         "net6.0": {
           "targetAlias": "net6.0",
           "dependencies": {
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[6.0.5, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "target": "Package",
+              "version": "[1.1.0-preview4-final, )"
+            },
+            "Npgsql.EntityFrameworkCore.PostgreSQL": {
+              "target": "Package",
+              "version": "[6.0.4, )"
+            },
             "Swashbuckle.AspNetCore": {
               "target": "Package",
               "version": "[6.2.3, )"
