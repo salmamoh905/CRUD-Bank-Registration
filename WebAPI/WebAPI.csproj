@@ -12,5 +12,6 @@
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3"/>
 		<PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="1.1.0-preview4-final"/>
 		<PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="6.0.4"/>
+		<PackageReference Include="Microsoft.AspNet.WebApi.Cors" Version="5.2.9"/>
 	</ItemGroup>
 </Project>
