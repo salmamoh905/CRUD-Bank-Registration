@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "yN2tKKITZpFSgQzDgJWCsKu/08fTNwU8BRn3u6kQDV8wf0TO7AVTaPt4sDtzJFJha04INe6p57hzHv5I7OHxsw==",
+  "dgSpecHash": "KfUkJ9ZxvnrXg17AaIq/1SzAqu9ws5ePkwXoL03SmuQHXY4d0rniuvGcHz3+P9jKnmqO4RJOyzlwpbf+EYpmzg==",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\Downloads\\bank\\WebAPI\\WebAPI.csproj",
+  "projectFilePath": "C:\\Users\\user\\Downloads\\bank\\webapi\\WebAPI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.aspnet.cors\\5.2.9\\microsoft.aspnet.cors.5.2.9.nupkg.sha512",

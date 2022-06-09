@@ -27,6 +27,7 @@ namespace WebAPI.Controllers;
                 return BadRequest("Bank user not found.");
             return Ok(bankuser);
         }
+
            [HttpPost]
         public async Task<IActionResult> PostAsync (BankUser bankuser)
         {
@@ -44,7 +45,7 @@ namespace WebAPI.Controllers;
         {
             var dbUser = await _context.BankUsers.FindAsync(id);
             if (dbUser == null)
-                return BadRequest("Hero not found.");
+                return BadRequest("user not found.");
 
             _context.BankUsers.Remove(dbUser);
             await _context.SaveChangesAsync();
@@ -53,7 +54,36 @@ namespace WebAPI.Controllers;
         }
 
 
+         [HttpPut("{id}")]
+        public async Task<ActionResult<BankUser>> UpdateUser(BankUser request)
+        {
+            var dbUser = await _context.BankUsers.FindAsync(request.Id);
+            if (dbUser == null)
+                return BadRequest("user not found.");
 
-   }
+            
+            dbUser.FirstName = request.FirstName;
+            dbUser.LastName = request.LastName;
+            dbUser.Email = request.Email;
+            dbUser.Password = request.Password;
+            dbUser.amount = request.amount;
+
+            await _context.SaveChangesAsync();
+
+            return Ok(await _context.BankUsers.ToListAsync());
+        }
+
+
+     
+
+   
+}
+
+
+        
+
+
+
+   
 
 //remaining updating user by the id

@@ -2,6 +2,7 @@
     "cSpell.words": [
         "bankuser",
         "HSTS",
-        "Npgsql"
+        "Npgsql",
+        "toastr"
     ]
 }
