@@ -10,6 +10,8 @@ namespace WebAPI.Data
         }
    
         public DbSet<BankUser> BankUsers {get;set;}
+        public DbSet<Account> Accounts {get;set;}
+        public DbSet<Transaction> Transactions {get;set;} 
        
     }
 }

@@ -12,7 +12,12 @@ namespace WebAPI.Models
         public int Password { get; set; }
 
         public int amount { get; set; }
-        public DateTime Created { get; set; }
+        public int accountType { get; set; }
+        public  string TransactionType { get; set; }
+        public string TransactionAmount { get; set; }
+        public DateTime CreatedAt { get; set; }
+
+
 
     }
 }
