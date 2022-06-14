@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebAPI.Data;
 using WebAPI.Models;
+using WebAPI.Models.Dto;
 
 namespace WebAPI.Controllers;
 
@@ -29,21 +30,61 @@ namespace WebAPI.Controllers;
         }
 
            [HttpPost]
-        public async Task<IActionResult> PostAsync (BankUser bankuser)
+
+
+            public async Task<IActionResult> PostAsync (BankUser bankuser)
         {
+
+            if(!ModelState.IsValid) {
+                return  BadRequest(ModelState);
+            }
             _context.BankUsers.Add(bankuser);
+            //  _context.Accounts.Add(accounts);
             await _context.SaveChangesAsync();
             
+            _context.Entry(bankuser)
+            .Reference(x => x.Transactions)
+            .Load();
+            var bankUserDto = new BankUserDto() 
+            {
+                Id =bankuser.Id,
+                FirstName = bankuser.FirstName,
+                LastName = bankuser.LastName,
+                Email = bankuser.Email,
+                Password = bankuser.Password
+                
+            
+
+            };
 
 
-            return Ok(new { message = "User created" });
+            return Ok(new {id= bankuser.Id });
 
            // return Ok(await _context.BankUsers.ToListAsync());
         }
+
+        
+        // public async Task<IActionResult> PostAsync (BankUser   bankuser)
+        // {
+        //     _context.BankUsers.Add(bankuser);
+        //      _context.Transactions.AddRange(bankuser.Transactions);
+        //     await _context.SaveChangesAsync();
+        //     // _context.BankUsers.Add(bankuser);
+        //     // await _context.SaveChangesAsync();
+            
+
+
+        //     return Ok(new { message = "Bank User created" });
+
+        //    // return Ok(await _context.BankUsers.ToListAsync());
+        // }
+      
+
+
        [HttpDelete("{id}")]
-        public async Task<ActionResult<List<BankUser>>> Delete(int id)
+        public async Task<ActionResult<List<BankUser>>> Delete(int Id)
         {
-            var dbUser = await _context.BankUsers.FindAsync(id);
+            var dbUser = await _context.BankUsers.FindAsync(Id);
             if (dbUser == null)
                 return BadRequest("user not found.");
 
@@ -66,7 +107,7 @@ namespace WebAPI.Controllers;
             dbUser.LastName = request.LastName;
             dbUser.Email = request.Email;
             dbUser.Password = request.Password;
-            dbUser.amount = request.amount;
+            
 
             await _context.SaveChangesAsync();
 

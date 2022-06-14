@@ -11,11 +11,13 @@ namespace WebAPI.Models
         public string Email { get; set; }
         public int Password { get; set; }
 
-        public int amount { get; set; }
-        public int accountType { get; set; }
-        public  string TransactionType { get; set; }
-        public string TransactionAmount { get; set; }
-        public DateTime CreatedAt { get; set; }
+       
+        //navigation property
+        public  List<Transaction> Transactions { get; set; }
+        
+      
+       
+        
 
 
 
