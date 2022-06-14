@@ -2,7 +2,6 @@ namespace WebAPI.Models.Dto
 {
     public class BankUserDto
     {
-         public int Id { get; set; }
 
         public string? FirstName {get; set; }
 

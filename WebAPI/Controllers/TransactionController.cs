@@ -17,36 +17,41 @@ namespace WebAPI.Controllers;
         _context=context;
     }
      [HttpPost]
-        public async Task<IActionResult> PostAsync (Transaction transaction)
+        public async Task<IActionResult> PostAsync (TransactionDto transactionDto)
         {
 
             if(!ModelState.IsValid) {
                 return  BadRequest(ModelState);
             }
-            _context.Transactions.Add(transaction);
+           
             //  _context.Accounts.Add(accounts);
             await _context.SaveChangesAsync();
             
-            _context.Entry(transaction)
-            .Reference(x => x.BankUser)
-            .Load();
-            var transactionDto = new TransactionDto() 
+            // _context.Entry(transactionDto)
+            // .Reference(x => x.BankUser)
+            // .Load();
+            var transaction = new Transaction() 
             {
-                Id =transaction.Id,
-                AccountNumber = transaction.AccountNumber,
-                TransactionType = transaction.TransactionType,
-                amount = transaction.amount,
-                AccountBalance = transaction.AccountBalance,
-                TransactionDate = transaction.TransactionDate,
-                BankUserId = transaction.BankUser.Id
+                AccountNumber = transactionDto.AccountNumber,
+                TransactionType = transactionDto.TransactionType,
+                amount = transactionDto.amount,
+                AccountBalance = transactionDto.AccountBalance,
+                TransactionDate = transactionDto.TransactionDate,
+                BankUserId = transactionDto.BankUserId
             
 
             };
+            
+            await _context.SaveChangesAsync();
+
+            await _context.Transactions.AddAsync(transaction);
+            await _context.SaveChangesAsync();
 
 
-            return Ok(new {id= transaction.Id });
 
-           // return Ok(await _context.BankUsers.ToListAsync());
+           //return Ok(new {id= transaction.Id });
+
+           return Ok(await _context.Transactions.ToListAsync());
         }
 
 

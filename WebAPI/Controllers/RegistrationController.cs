@@ -6,8 +6,7 @@ using WebAPI.Models.Dto;
 
 namespace WebAPI.Controllers;
 
-// [ApiController]
-// [Route("api/registrations")]
+
 [ApiController]
 [Route("[controller]")]
     public class RegistrationController : ControllerBase
@@ -29,56 +28,44 @@ namespace WebAPI.Controllers;
             return Ok(bankuser);
         }
 
-           [HttpPost]
-
-
-            public async Task<IActionResult> PostAsync (BankUser bankuser)
+           
+           
+        [HttpPost]
+            public async Task<IActionResult> PostAsync (BankUserDto bankUserDto)
         {
 
-            if(!ModelState.IsValid) {
-                return  BadRequest(ModelState);
-            }
-            _context.BankUsers.Add(bankuser);
-            //  _context.Accounts.Add(accounts);
-            await _context.SaveChangesAsync();
+            // if(!ModelState.IsValid) {
+            //     return  BadRequest(ModelState);
+            // }
             
-            _context.Entry(bankuser)
-            .Reference(x => x.Transactions)
-            .Load();
-            var bankUserDto = new BankUserDto() 
+            
+            // _context.Entry(bankuser)
+            // .Reference(x => x.Transactions)
+            // .Load();
+            var bankUser = new BankUser() 
             {
-                Id =bankuser.Id,
-                FirstName = bankuser.FirstName,
-                LastName = bankuser.LastName,
-                Email = bankuser.Email,
-                Password = bankuser.Password
-                
-            
-
+                FirstName = bankUserDto.FirstName,
+                LastName = bankUserDto.LastName,
+                Email = bankUserDto.Email,
+                Password = bankUserDto.Password     
             };
 
+             
+           
+            await _context.SaveChangesAsync();
 
-            return Ok(new {id= bankuser.Id });
+            await _context.BankUsers.AddAsync(bankUser);
+            //await _context.Transactions.AddAsync(new Transaction () { BankUser = bankUser});
+            await _context.SaveChangesAsync();
+
+
+            return Ok(bankUserDto);
 
            // return Ok(await _context.BankUsers.ToListAsync());
         }
 
         
-        // public async Task<IActionResult> PostAsync (BankUser   bankuser)
-        // {
-        //     _context.BankUsers.Add(bankuser);
-        //      _context.Transactions.AddRange(bankuser.Transactions);
-        //     await _context.SaveChangesAsync();
-        //     // _context.BankUsers.Add(bankuser);
-        //     // await _context.SaveChangesAsync();
-            
-
-
-        //     return Ok(new { message = "Bank User created" });
-
-        //    // return Ok(await _context.BankUsers.ToListAsync());
-        // }
-      
+       
 
 
        [HttpDelete("{id}")]
