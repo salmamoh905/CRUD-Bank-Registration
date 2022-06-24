@@ -34,20 +34,13 @@ namespace WebAPI.Controllers;
             public async Task<IActionResult> PostAsync (BankUserDto bankUserDto)
         {
 
-            // if(!ModelState.IsValid) {
-            //     return  BadRequest(ModelState);
-            // }
-            
-            
-            // _context.Entry(bankuser)
-            // .Reference(x => x.Transactions)
-            // .Load();
             var bankUser = new BankUser() 
             {
                 FirstName = bankUserDto.FirstName,
                 LastName = bankUserDto.LastName,
                 Email = bankUserDto.Email,
-                Password = bankUserDto.Password     
+                Password = bankUserDto.Password,
+                Initialamount = bankUserDto.Initialamount,  
             };
 
              
@@ -64,7 +57,7 @@ namespace WebAPI.Controllers;
            // return Ok(await _context.BankUsers.ToListAsync());
         }
 
-        
+                
        
 
 
@@ -94,6 +87,8 @@ namespace WebAPI.Controllers;
             dbUser.LastName = request.LastName;
             dbUser.Email = request.Email;
             dbUser.Password = request.Password;
+            dbUser.AccountNumber = request.AccountNumber;
+            dbUser.Initialamount = request.Initialamount;
             
 
             await _context.SaveChangesAsync();

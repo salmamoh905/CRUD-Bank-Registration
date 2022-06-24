@@ -12,8 +12,8 @@ using WebAPI.Data;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220614061736_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20220616071345_readdedBankUserColumn")]
+    partial class readdedBankUserColumn
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -26,25 +26,28 @@ namespace WebAPI.Migrations
 
             modelBuilder.Entity("WebAPI.Models.BankUser", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<int?>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int?>("Id"));
+
+                    b.Property<int?>("AccountNumber")
+                        .HasColumnType("integer");
 
                     b.Property<string>("Email")
-                        .IsRequired()
                         .HasColumnType("text");
 
                     b.Property<string>("FirstName")
-                        .IsRequired()
                         .HasColumnType("text");
+
+                    b.Property<int?>("Initialamount")
+                        .HasColumnType("integer");
 
                     b.Property<string>("LastName")
-                        .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<int>("Password")
+                    b.Property<int?>("Password")
                         .HasColumnType("integer");
 
                     b.HasKey("Id");
@@ -60,24 +63,23 @@ namespace WebAPI.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("AccountBalance")
+                    b.Property<int?>("AccountBalance")
                         .HasColumnType("integer");
 
-                    b.Property<int>("AccountNumber")
+                    b.Property<int?>("AccountNumber")
                         .HasColumnType("integer");
 
                     b.Property<int>("BankUserId")
+                        .HasColumnType("integer");
+
+                    b.Property<int?>("TransactedAmount")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("TransactionDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("TransactionType")
-                        .IsRequired()
                         .HasColumnType("text");
-
-                    b.Property<int>("amount")
-                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 

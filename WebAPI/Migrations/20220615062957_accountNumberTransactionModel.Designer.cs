@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WebAPI.Data;
@@ -11,9 +12,10 @@ using WebAPI.Data;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20220615062957_accountNumberTransactionModel")]
+    partial class accountNumberTransactionModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,13 +26,13 @@ namespace WebAPI.Migrations
 
             modelBuilder.Entity("WebAPI.Models.BankUser", b =>
                 {
-                    b.Property<int?>("Id")
+                    b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("integer");
 
-                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int?>("Id"));
+                    NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AccountNumber")
+                    b.Property<int>("AccountNumber")
                         .HasColumnType("integer");
 
                     b.Property<string>("Email")
@@ -39,7 +41,7 @@ namespace WebAPI.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("text");
 
-                    b.Property<int?>("Initialamount")
+                    b.Property<int>("Initialamount")
                         .HasColumnType("integer");
 
                     b.Property<string>("LastName")
@@ -61,16 +63,16 @@ namespace WebAPI.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<int?>("AccountBalance")
+                    b.Property<int>("AccountBalance")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("AccountNumber")
+                    b.Property<int>("AccountNumber")
                         .HasColumnType("integer");
 
                     b.Property<int>("BankUserId")
                         .HasColumnType("integer");
 
-                    b.Property<int?>("TransactedAmount")
+                    b.Property<int>("TransactedAmount")
                         .HasColumnType("integer");
 
                     b.Property<DateTime>("TransactionDate")

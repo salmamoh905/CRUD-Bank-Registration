@@ -4,7 +4,7 @@
 
 namespace WebAPI.Migrations
 {
-    public partial class transactioncolumn : Migration
+    public partial class accountNumberTransactionModel : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

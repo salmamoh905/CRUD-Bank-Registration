@@ -12,8 +12,8 @@ using WebAPI.Data;
 namespace WebAPI.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220614095443_updatedtransactiontype")]
-    partial class updatedtransactiontype
+    [Migration("20220615062114_updatedTransactionModel")]
+    partial class updatedTransactionModel
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -32,11 +32,17 @@ namespace WebAPI.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
+                    b.Property<int>("AccountNumber")
+                        .HasColumnType("integer");
+
                     b.Property<string>("Email")
                         .HasColumnType("text");
 
                     b.Property<string>("FirstName")
                         .HasColumnType("text");
+
+                    b.Property<int>("Initialamount")
+                        .HasColumnType("integer");
 
                     b.Property<string>("LastName")
                         .HasColumnType("text");
@@ -66,14 +72,14 @@ namespace WebAPI.Migrations
                     b.Property<int>("BankUserId")
                         .HasColumnType("integer");
 
+                    b.Property<int>("TransactedAmount")
+                        .HasColumnType("integer");
+
                     b.Property<DateTime>("TransactionDate")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("TransactionType")
                         .HasColumnType("text");
-
-                    b.Property<int>("amount")
-                        .HasColumnType("integer");
 
                     b.HasKey("Id");
 

@@ -6,7 +6,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace WebAPI.Migrations
 {
-    public partial class InitialCreate : Migration
+    public partial class latestmodelId : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -16,10 +16,11 @@ namespace WebAPI.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    FirstName = table.Column<string>(type: "text", nullable: false),
-                    LastName = table.Column<string>(type: "text", nullable: false),
-                    Email = table.Column<string>(type: "text", nullable: false),
-                    Password = table.Column<int>(type: "integer", nullable: false)
+                    FirstName = table.Column<string>(type: "text", nullable: true),
+                    LastName = table.Column<string>(type: "text", nullable: true),
+                    Email = table.Column<string>(type: "text", nullable: true),
+                    Password = table.Column<int>(type: "integer", nullable: true),
+                    AccountNumber = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -32,11 +33,11 @@ namespace WebAPI.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    AccountNumber = table.Column<int>(type: "integer", nullable: false),
-                    TransactionType = table.Column<string>(type: "text", nullable: false),
+                    TransactionType = table.Column<string>(type: "text", nullable: true),
                     amount = table.Column<int>(type: "integer", nullable: false),
                     AccountBalance = table.Column<int>(type: "integer", nullable: false),
                     TransactionDate = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    AccountNumber = table.Column<int>(type: "integer", nullable: false),
                     BankUserId = table.Column<int>(type: "integer", nullable: false)
                 },
                 constraints: table =>

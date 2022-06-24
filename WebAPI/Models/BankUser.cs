@@ -10,6 +10,9 @@ namespace WebAPI.Models
         public string? LastName { get; set; }
         public string? Email { get; set; }
         public int? Password { get; set; }
+      public int? AccountNumber{get; set; }
+       public int? Initialamount { get; set; }
+        
 
        
         //navigation property

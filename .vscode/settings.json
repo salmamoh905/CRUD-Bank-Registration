@@ -2,7 +2,9 @@
     "cSpell.words": [
         "bankuser",
         "HSTS",
+        "Initialamount",
         "Npgsql",
-        "toastr"
+        "toastr",
+        "transactiontype"
     ]
 }
